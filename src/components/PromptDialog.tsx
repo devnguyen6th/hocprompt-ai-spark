@@ -1,4 +1,5 @@
 
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { X, Copy, Edit3 } from 'lucide-react';
@@ -11,7 +12,6 @@ import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 import { Prompt } from '@/data/mockData';
-import { useState } from 'react';
 
 interface PromptDialogProps {
   prompt: Prompt | null;
@@ -25,7 +25,7 @@ const PromptDialog = ({ prompt, isOpen, onClose }: PromptDialogProps) => {
   const [promptText, setPromptText] = useState('');
   const currentLang = i18n.language as 'vi' | 'en';
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (prompt) {
       setPromptText(prompt.prompt[currentLang]);
     }
