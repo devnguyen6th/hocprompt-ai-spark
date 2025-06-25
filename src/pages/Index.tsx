@@ -6,7 +6,7 @@ import SearchSection from '@/components/SearchSection';
 import AIToolsTabs from '@/components/AIToolsTabs';
 import PromptCard from '@/components/PromptCard';
 import PromptDialog from '@/components/PromptDialog';
-import LanguageSwitcher from '@/components/LanguageSwitcher';
+import Header from '@/components/Header';
 import { aiTools, prompts, Prompt } from '@/data/mockData';
 
 const Index = () => {
@@ -39,23 +39,11 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-600 via-blue-600 to-indigo-800">
-      {/* Header */}
-      <header className="absolute top-0 left-0 right-0 z-50 p-6">
-        <div className="flex justify-between items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="text-white font-bold text-2xl"
-          >
-            hocprompt
-          </motion.div>
-          <LanguageSwitcher />
-        </div>
-      </header>
-
+    <div className="min-h-screen bg-[#1c1c1c]">
+      <Header />
+      
       {/* Main Content */}
-      <div className="container mx-auto px-6 pt-24">
+      <div className="container mx-auto px-6 pt-20">
         <SearchSection onSearch={setSearchQuery} />
         
         <AIToolsTabs
@@ -65,10 +53,7 @@ const Index = () => {
         />
 
         {/* Prompt Grid */}
-        <motion.div
-          layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 pb-16"
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 pb-16">
           {filteredPrompts.map((prompt) => (
             <PromptCard
               key={prompt.id}
@@ -76,7 +61,7 @@ const Index = () => {
               onClick={() => handlePromptClick(prompt)}
             />
           ))}
-        </motion.div>
+        </div>
 
         {/* Empty State */}
         {filteredPrompts.length === 0 && (
@@ -86,7 +71,7 @@ const Index = () => {
             className="text-center py-16"
           >
             <p className="text-white/70 text-lg">
-              Không tìm thấy prompt nào phù hợp
+              {t('noPromptsFound')}
             </p>
           </motion.div>
         )}

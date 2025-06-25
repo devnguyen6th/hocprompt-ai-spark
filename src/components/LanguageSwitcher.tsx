@@ -20,7 +20,7 @@ const LanguageSwitcher = () => {
         variant="outline"
         size="sm"
         onClick={toggleLanguage}
-        className="bg-white/10 border-white/20 text-white hover:bg-white/20 transition-all duration-300"
+        className="bg-white/5 border-white/20 text-white hover:bg-white/10 hover:border-white/30 transition-all duration-300"
       >
         {i18n.language === 'vi' ? 'EN' : 'VN'}
       </Button>
